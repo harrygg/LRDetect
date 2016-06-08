@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="LRDetectNewTest.SimpleJsonParserTest.ReadJsonFile" /><Add Test="LRDetectNewTest.SimpleJsonParserTest.ReadJsonFile_Returns_Dictionary" /><Add Test="LRDetectNewTest.SimpleJsonParserTest.ReadTCIEPrefContent" /></Playlist>

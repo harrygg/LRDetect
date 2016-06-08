@@ -1,0 +1,7 @@
+<VuGenProperties>
+  <Array name="Browser.URLBoxHistory" />
+  <BrowserCommunicationRecoveryWaitingTime value="6" />
+  <BrowserCommunicationServerEndPort value="8090" />
+  <BrowserCommunicationServerStartPort value="8080" />
+  <BrowserCommunicationServerURL value="http://127.0.0.1:" />
+</VuGenProperties>

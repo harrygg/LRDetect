@@ -13,7 +13,7 @@ namespace LRDetect
         {
             MapiMessage msg = new MapiMessage();
             msg.subject = "LR Detect Tool Information";
-            msg.noteText = "See the atached file for details.";
+            msg.noteText = "See the attached file for details.";
             msg.files = GetAttachments(fileName, out msg.fileCount);
 
             int result = MAPISendMail(new IntPtr(0), new IntPtr(0), msg, 0x00000001 | 0x00000008, 0);

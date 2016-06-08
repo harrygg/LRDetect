@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="LRDetectNewTest.DetectJavaTest.FormatJavaVersionFromCmdstring_Returns_Java_Version" /><Add Test="LRDetectNewTest.DetectJavaTest.ExecuteJavaVersionCommand_Returns_Java_Output" /></Playlist>

@@ -1,0 +1,1 @@
+<Playlist Version="1.0"><Add Test="LRDetectNewTest.WindowsInstallerProductTest.DisplayNameForExistingProduct_ReturnsName" /><Add Test="LRDetectNewTest.WindowsInstallerProductTest.DisplayNameForNonExistingProduct_ReturnsEmptyString" /><Add Test="LRDetectNewTest.WindowsInstallerProductTest.IsNonExistingProductInstalled_ReturnsFalse" /></Playlist>

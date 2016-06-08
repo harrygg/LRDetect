@@ -37,15 +37,22 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>LRDetect.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -55,6 +62,8 @@
     <Reference Include="System.Management" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -62,25 +71,58 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnalysisSAInfo.cs" />
+    <Compile Include="AnalysisIni.cs" />
+    <Compile Include="Collectors\ControllerSettingsCollector.cs" />
+    <Compile Include="Collectors\NVShunraCollector.cs" />
+    <Compile Include="Collectors\PCServicesCollector.cs" />
+    <Compile Include="Helpers\CitrixHelper.cs" />
+    <Compile Include="Helpers\ClientsCollectorHelper.cs" />
+    <Compile Include="Helpers\CorrelationConfigurationHelper.cs" />
+    <Compile Include="Helpers\NVShunraCollectorHelper.cs" />
+    <Compile Include="Helpers\OracleClientsDetector.cs" />
+    <Compile Include="Helpers\PCServicesCollectorHelper.cs" />
+    <Compile Include="Helpers\WinTrust.cs" />
+    <Compile Include="Html\Html.cs" />
+    <Compile Include="Helpers\ControllerSettingsCollectorHelper.cs" />
+    <Compile Include="CorrelationRules.cs" />
+    <Compile Include="HashCheck.cs" />
+    <Compile Include="Html\HtmlElement.cs" />
+    <Compile Include="Html\HtmlTabs.cs" />
+    <Compile Include="Helpers\InstalledProgramsHelper.cs" />
+    <Compile Include="Collectors\HardwareCollector.cs" />
+    <Compile Include="Collectors\SoftwareCollector.cs" />
+    <Compile Include="InstalledProgram.cs" />
+    <Compile Include="Parsers\JSON.cs" />
+    <Compile Include="MSIProduct.cs" />
+    <Compile Include="OS.cs" />
+    <Compile Include="ProductInfoClasses\AnalysisSAInfo.cs" />
+    <Compile Include="Collectors\AnalysisSettingsCollector.cs" />
+    <Compile Include="LRDetectZipper.cs" />
+    <Compile Include="ProductInfoClasses\ApplicationLifecycleManagementInfo.cs" />
+    <Compile Include="ProductInfoClasses\BusinessProcessMonitorInfo.cs" />
+    <Compile Include="Collectors\ClientsCollector.cs" />
+    <Compile Include="Collectors\Collector.cs" />
     <Compile Include="DetectJava.cs" />
-    <Compile Include="DetectPrerequisites.cs" />
+    <Compile Include="DetectRecordingOptions.cs" />
     <Compile Include="DetectSecuritySoftware.cs" />
-    <Compile Include="Form2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="IniParser.cs" />
-    <Compile Include="IsUserAdminNativeMethods.cs" />
-    <Compile Include="Log.cs" />
-    <Compile Include="MagentInfo.cs" />
+    <Compile Include="Collectors\DllsCollector.cs" />
+    <Compile Include="FormArguments.cs" />
+    <Compile Include="Html\HtmlTable.cs" />
+    <Compile Include="Parsers\IniParser.cs" />
+    <Compile Include="Helpers\IsUserAdminNativeMethods.cs" />
+    <Compile Include="Logger.cs" />
+    <Compile Include="Collectors\LRCollector.cs" />
+    <Compile Include="Collectors\LRConfigurationCollector.cs" />
+    <Compile Include="Collectors\MAgentCollector.cs" />
+    <Compile Include="Helpers\MagentCollectorHelper.cs" />
     <Compile Include="Mapi.cs" />
-    <Compile Include="MonitorOverFirewallInfo.cs" />
-    <Compile Include="OSInfo.cs" />
+    <Compile Include="ProductInfoClasses\MIListener.cs" />
+    <Compile Include="ProductInfoClasses\MonitorOverFirewallInfo.cs" />
+    <Compile Include="Collectors\OSCollector.cs" />
+    <Compile Include="Helpers\OSCollectorHelper.cs" />
     <Compile Include="DetectOtherSoftware.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -88,23 +130,30 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helper.cs" />
-    <Compile Include="Html.cs" />
-    <Compile Include="LoadGeneratorInfo.cs" />
-    <Compile Include="LoadRunnerInfo.cs" />
-    <Compile Include="PerformanceCenterHostInfo.cs" />
-    <Compile Include="PerformanceCenterServerInfo.cs" />
-    <Compile Include="ProductInfo.cs" />
+    <Compile Include="Helpers\Helper.cs" />
+    <Compile Include="Html\HtmlReport.cs" />
+    <Compile Include="ProductInfoClasses\LoadGeneratorInfo.cs" />
+    <Compile Include="ProductInfoClasses\LoadRunnerInfo.cs" />
+    <Compile Include="ProductInfoClasses\PerformanceCenterHostInfo.cs" />
+    <Compile Include="ProductInfoClasses\PerformanceCenterServerInfo.cs" />
+    <Compile Include="Collectors\ProcessesCollector.cs" />
+    <Compile Include="ProductDetection.cs" />
+    <Compile Include="ProductInfoClasses\ProductInfo.cs" />
+    <Compile Include="ProductInfoClasses\ShunraInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QuickTestProInfo.cs" />
-    <Compile Include="RegistryWrapper.cs" />
-    <Compile Include="VugenSAInfo.cs" />
+    <Compile Include="Collectors\VugenProtocolsCollector.cs" />
+    <Compile Include="ProductInfoClasses\QuickTestProInfo.cs" />
+    <Compile Include="Helpers\RegistryWrapper.cs" />
+    <Compile Include="Collectors\RelatedProductsCollector.cs" />
+    <Compile Include="ProductInfoClasses\VirtualTableServer.cs" />
+    <Compile Include="ProductInfoClasses\VugenSAInfo.cs" />
+    <Compile Include="ReportBuilder.cs" />
+    <Compile Include="Parsers\VuGenProperties.cs" />
+    <Compile Include="Helpers\VugenProtocolsCollectorHelper.cs" />
+    <Compile Include="WindowsInstallerProduct.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -117,6 +166,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
+    <None Include="LRDetect.pfx" />
+    <None Include="LRDetect.snk" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -144,7 +195,29 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SecuritySoftware.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\JavaScriptContent.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Style.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Template.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\jquery-1.11.1.min.js" />
+    <Content Include="Resources\jquery.tooltipster.js" />
+    <Content Include="Resources\tooltipster.css" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\editbin" /largeaddressaware "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
