@@ -46,16 +46,17 @@ namespace LRDetect
       return new HtmlElement("pre") { text = innerHTML }.ToString();
     }
 
-    public static string AddLinkToHiddenContent(string rawContent, string customName = ShowMore)
+    public static string AddLinkToHiddenContent(string rawContent, bool visible = false)
     {
       string divId = Guid.NewGuid().ToString().Substring(0, 8);
-      var el = new HtmlElement("a") { text = customName };
+      var el = new HtmlElement("a") { text = visible ? ShowLess : ShowMore };
       el.Attributes.Add("href", "#");
       el.Attributes.Add("class", "ShowMore");
       el.Attributes.Add("title", "Click here to show/hide additional content");
 
       var div = new HtmlElement("div") { text = rawContent };
-      div.Attributes.Add("class", "dontShow");
+      var className = visible ? "" : "dontShow";
+      div.Attributes.Add("class", ".hidable " + className);
 
       return el.ToString() + div.ToString();
     }

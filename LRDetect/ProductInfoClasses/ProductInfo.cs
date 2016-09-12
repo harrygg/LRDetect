@@ -62,6 +62,7 @@ namespace LRDetect
     public Version version = new Version(0, 0);
     
     public string CustomComponentsInstalled = String.Empty;
+    public string languagePack = String.Empty;
     public string mainExecutableFilesInfo = String.Empty;
     protected virtual string[] environmentVarNames { get { return null; } }
     public string environmentVariables = String.Empty;
@@ -115,6 +116,7 @@ namespace LRDetect
         isAnalysis = Executables[Executables.Keys.First()].Any(s => s.Contains("AnalysisUI.exe")) ? true : false;
         patchesInstalled = GetPatchesInstalled();
         CustomComponentsInstalled = GetCustomComponentsInstalled();
+        languagePack = GetLanguagePack();
         mainExecutableFilesInfo = GetExecutableFilesInfo();
         environmentVariables = GetEnvironmentVariables();
         //ImportantRegKeyValues = GetImportantRegKeyValues();
@@ -344,6 +346,22 @@ namespace LRDetect
                 Logger.Warn(ex.ToString());
                 return null;
             }
+        }
+
+        private string GetLanguagePack()
+        {
+            var output = Html.ErrorMsg();
+            try
+            {
+                string keyPath = this.ProductRegistryPath + @"CurrentVersion\";
+                RegistryKey rk = Registry.LocalMachine.OpenSubKey(keyPath);
+                output = rk.GetValue("LanguagePack").ToString();               
+            }
+            catch (Exception ex)
+            {
+                Logger.Warn(ex.ToString());
+            }
+            return output;
         }
 
         private string GetEnvironmentVariables()

@@ -22,5 +22,6 @@ pre {font-size:1.2em}
 .notice {color: green;}
 .warning {color: #FF6000;}
 .error {color: #CC0000;}
-.dontShow {display:none; font: .8em/1.2em "HPFutura Book", Courier; padding-top:10px; word-break:break-word}
-.dontShow b {display:inline-block;padding-top:5px;}
+.hidable {font: .8em/1.2em "HPFutura Book", Courier; padding-top:10px; word-break:break-word}
+.hidable b {display:inline-block;padding-top:5px;}
+.dontShow { display:none; }

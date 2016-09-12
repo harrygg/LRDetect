@@ -19,8 +19,8 @@ namespace LRDetect
             return new Dictionary<string, List<string>> 
             {            
               { "12.0x", new List<string> { "Wlrun.exe", "vugen.exe", "mdrv.exe", "mmdrv.exe", @"bin\firefox\firefox.exe", "AnalysisUI.exe", "lr_bridge.exe", "HP.Utt.StandaloneDebugger.exe", "HP.LR.ProxyRecorderStarter.exe", "TcWebIELauncher.exe" } },
-              { "11.52", new List<string> { "Wlrun.exe", "vugen.exe", "mdrv.exe", "mmdrv.exe", @"bin\firefox\firefox.exe", "AnalysisUI.exe", "lr_bridge.exe", "HP.Utt.Stan  daloneDebugger.exe", "HP.LR.ProxyRecorderStarter.exe" } },
-              { "11.5x", new List<string> { "Wlrun.exe", "vugen.exe", "mdrv.exe", "mmdrv.exe", @"bin\firefox\firefox.exe", "AnalysisUI.exe", "lr_bridge.exe", "HP.Utt.Stan  daloneDebugger.exe" } }, 
+              { "11.52", new List<string> { "Wlrun.exe", "vugen.exe", "mdrv.exe", "mmdrv.exe", @"bin\firefox\firefox.exe", "AnalysisUI.exe", "lr_bridge.exe", "HP.Utt.StandaloneDebugger.exe", "HP.LR.ProxyRecorderStarter.exe" } },
+              { "11.5x", new List<string> { "Wlrun.exe", "vugen.exe", "mdrv.exe", "mmdrv.exe", @"bin\firefox\firefox.exe", "AnalysisUI.exe", "lr_bridge.exe", "HP.Utt.StandaloneDebugger.exe" } }, 
               { "11.0x", new List<string> { "Wlrun.exe", "vugen.exe", "mdrv.exe", "mmdrv.exe", @"bin\firefox\firefox.exe", "AnalysisUI.exe", "lr_bridge.exe" } }, 
               { "9.5x", new List<string> { "Wlrun.exe", "vugen.exe", "mdrv.exe", "mmdrv.exe", @"bin\firefox\firefox.exe", "AnalysisUI.exe", "lr_bridge.exe" } }
             };

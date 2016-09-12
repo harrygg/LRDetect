@@ -22,7 +22,7 @@ namespace LRDetect
       base.OnRaiseProgressUpdate();
 
       var title = "WEB (HTTP/HTML)";
-      AddDataPair(title, "Last used recording options", "User " + Html.B(Environment.UserName) + "  " + Html.AddLinkToHiddenContent(ro.ToString()));
+      AddDataPair(title, "Last used recording options", "User " + Html.B(Environment.UserName) + "  " + Html.AddLinkToHiddenContent(ro.ToString(), true));
 
       if (ProductDetection.Vugen.isNew)
       {

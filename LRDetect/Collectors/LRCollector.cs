@@ -46,6 +46,7 @@ namespace LRDetect
         //StringBuilder importantRegKeys = new StringBuilder(1024);
         StringBuilder environmentVariables = new StringBuilder(1024);
         StringBuilder patchesInstalledInfo = new StringBuilder(1024);
+        var languagePacks = new StringBuilder();
 
         foreach (var installedProduct in ProductDetection.installedProducts)
         {
@@ -54,13 +55,15 @@ namespace LRDetect
           //importantRegKeys.Append(installedProduct.ImportantRegKeyValues);
           environmentVariables.Append(installedProduct.environmentVariables);
           patchesInstalledInfo.Append(installedProduct.patchesInstalled);
+          languagePacks.Append(installedProduct.languagePack);
         }
 
         // Collect the patches for the installed products
         string patchesInstalled = (patchesInstalledInfo.ToString() != "") ? patchesInstalledInfo.ToString() : "None";
         AddDataPair(title, "Patches installed", patchesInstalled);
+        AddDataPair(title, "Language pack", languagePacks.ToString());
         AddDataPair(title, "Custom components installed", customComponentsInstalled.ToString());
-
+        
         AddDataPair(title, "Main executable files", mainExecutableFiles.ToString());
         //AddStringsToDictionary("LoadRunner Information", "Various registry keys", importantRegKeys.ToString());
         // check if we only have MOF installed
